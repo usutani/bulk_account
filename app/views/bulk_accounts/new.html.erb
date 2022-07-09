@@ -3,15 +3,8 @@
 <%= form_with(url: :bulk_accounts) do |form| %>
   <% @accounts.each do |account| %>
     <%= fields_for "accounts[]", account do |account_fields| %>
-      <div>
-        <%= account_fields.label :name, style: "display: block" %>
-        <%= account_fields.text_field :name %>
-        <% if account.errors[:name].any? %>
-          <div style="color: red">
-            <%= account.errors.full_messages_for(:name).first %>
-          </div>
-        <% end%>
-      </div>
+      <%= render "account_text_field", account: account, account_fields: account_fields, key: :name %>
+      <%= render "account_text_field", account: account, account_fields: account_fields, key: :email %>
       <hr>
     <% end %>
   <% end %>

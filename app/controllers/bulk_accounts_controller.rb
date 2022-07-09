@@ -15,6 +15,6 @@ class BulkAccountsController < ApplicationController
 
   private
     def accounts_params
-      params.require(:accounts).map { _1.permit(:name) }
+      params.require(:accounts).map { _1.permit(:name, :email) }
     end
 end

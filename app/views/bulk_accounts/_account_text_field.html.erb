@@ -1,0 +1,9 @@
+<div>
+  <%= account_fields.label key, style: "display: block" %>
+  <%= account_fields.text_field key %>
+  <% if account.errors[key].any? %>
+    <div style="color: red">
+      <%= account.errors.full_messages_for(key).first %>
+    </div>
+  <% end%>
+</div>
