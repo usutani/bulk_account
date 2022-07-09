@@ -6,14 +6,18 @@
     <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
   <% end %>
 
-  <h1 class="font-bold text-4xl">New accounts</h1>
+  <h1 class="font-bold text-4xl mb-10">New accounts</h1>
 
   <%= form_with(url: :bulk_accounts, data: { controller: "only-child-hidden" }) do |form| %>
     <div id="accounts" data-only-child-hidden-target="childList">
       <%= render partial: "account", collection: @accounts %>
     </div>
-    <div class="mb-20">
-      <%= link_to "Add account", bulk_accounts_group_path, data: { turbo_method: :post } %>
+    <div class="relative flex justify-center -mt-10 mb-10">
+      <%= link_to(bulk_accounts_group_path, data: { turbo_method: :post }, class: "flex justify-center items-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 text-blue-600 text-4xl cursor-pointer") do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-9 h-9" viewBox="0 0 16 16">
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
+      <% end %>
     </div>
     <div>
       <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>

@@ -1,5 +1,11 @@
-<%= tag.div data: { controller: "element-removal" }, class: "py-2 px-3 mb-5" do %>
-  <a hidden data-action="element-removal#remove" data-only-child-hidden-target="hiddenElement">Remove</a>
+<%= tag.div data: { controller: "element-removal" }, class: "relative block shadow rounded-md border border-gray-200 outline-none py-2 px-3 mb-5" do %>
+  <div class="flex justify-end">
+    <a hidden data-action="element-removal#remove" data-only-child-hidden-target="hiddenElement" class="absolute -top-4 -right-4 cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="flex justify-center items-center w-8 h-8 rounded-full bg-white border-2 border-gray-200 text-blue-600 text-4xl" viewBox="0 0 16 16">
+        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+      </svg>
+    </a>
+  </div>
   <%= fields_for "accounts[]", account do |account_fields| %>
     <%= render "bulk_accounts/account_text_field", account: account, account_fields: account_fields, key: :name %>
     <%= render "bulk_accounts/account_text_field", account: account, account_fields: account_fields, key: :email %>
