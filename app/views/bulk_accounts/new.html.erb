@@ -1,17 +1,17 @@
-<p style="color: green"><%= notice %></p>
-<p style="color: red"><%= alert %></p>
-
-<h1>New accounts</h1>
-
-<%= form_with(url: :bulk_accounts) do |form| %>
-  <% @accounts.each do |account| %>
-    <%= fields_for "accounts[]", account do |account_fields| %>
-      <%= render "account_text_field", account: account, account_fields: account_fields, key: :name %>
-      <%= render "account_text_field", account: account, account_fields: account_fields, key: :email %>
-      <hr>
-    <% end %>
+<div class="mx-auto md:w-2/3 w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+  <% if alert.present? %>
+    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+  <% end %>
+
+  <h1 class="font-bold text-4xl">New accounts</h1>
+
+  <%= form_with(url: :bulk_accounts) do |form| %>
+    <%= render partial: "account", collection: @accounts %>
+    <div>
+      <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+  <% end %>
+</div>

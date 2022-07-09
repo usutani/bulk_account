@@ -1,8 +1,8 @@
-<div>
-  <%= account_fields.label key, style: "display: block" %>
-  <%= account_fields.text_field key %>
+<div class="my-5">
+  <%= account_fields.label key %>
+  <%= account_fields.text_field key, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   <% if account.errors[key].any? %>
-    <div style="color: red">
+    <div class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <%= account.errors.full_messages_for(key).first %>
     </div>
   <% end%>
