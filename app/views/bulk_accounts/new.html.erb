@@ -8,12 +8,12 @@
 
   <h1 class="font-bold text-4xl">New accounts</h1>
 
-  <%= form_with(url: :bulk_accounts) do |form| %>
-    <div id="accounts">
+  <%= form_with(url: :bulk_accounts, data: { controller: "only-child-hidden" }) do |form| %>
+    <div id="accounts" data-only-child-hidden-target="childList">
       <%= render partial: "account", collection: @accounts %>
     </div>
     <div class="mb-20">
-      <%= link_to 'Add account', bulk_accounts_group_path, data: { turbo_method: :post } %>
+      <%= link_to "Add account", bulk_accounts_group_path, data: { turbo_method: :post } %>
     </div>
     <div>
       <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
