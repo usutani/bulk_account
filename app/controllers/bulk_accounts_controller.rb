@@ -1,6 +1,6 @@
 class BulkAccountsController < ApplicationController
   def new
-    @accounts = 2.times.map{ Account.new }
+    @accounts = 1.times.map{ Account.new }
   end
 
   def create

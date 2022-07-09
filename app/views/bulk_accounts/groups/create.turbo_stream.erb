@@ -1,0 +1,3 @@
+<%= turbo_stream.append "accounts" do %>
+  <%= render "bulk_accounts/account", account: Account.new %>
+<% end %>

@@ -1,0 +1,2 @@
+module BulkAccounts::GroupsHelper
+end
