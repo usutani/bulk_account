@@ -1,2 +1,21 @@
-<h1>BulkAccounts#new</h1>
-<p>Find me in app/views/bulk_accounts/new.html.erb</p>
+<h1>New accounts</h1>
+
+<%= form_with(url: :bulk_accounts) do |form| %>
+  <% @accounts.each do |account| %>
+    <%= fields_for "accounts[]", account do |account_fields| %>
+      <div>
+        <%= account_fields.label :name, style: "display: block" %>
+        <%= account_fields.text_field :name %>
+        <% if account.errors[:name].any? %>
+          <div style="color: red">
+            <%= account.errors.full_messages_for(:name).first %>
+          </div>
+        <% end%>
+      </div>
+      <hr>
+    <% end %>
+  <% end %>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
